@@ -110,7 +110,7 @@ class LoginFormState {
       {this.isPosting = false,
       this.isFormPosted = false,
       this.isValid = false,
-      this.isCredencialsSaved = false,
+      this.isCredencialsSaved = true,
       this.email = const Email.pure(),
       this.password = const Password.pure()});
 

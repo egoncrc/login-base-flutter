@@ -30,11 +30,21 @@ final goRouterProvider = Provider((ref) {
         builder: (context, state) => const RegisterScreen(),
       ),
 
-      ///* Product Routes
+      ///* Memberships Routes
       GoRoute(
         path: '/',
         builder: (context, state) => const MembershipsScreen(),
       ),
+      
+      GoRoute(
+        path: '/membership/:zona',
+        builder: (context, state) =>  MembershipScreen(
+          zona: state.params['zona'] ?? 'no-zona',
+          
+        ),
+      ),
+
+      
     ],
 
     redirect: (context, state) {

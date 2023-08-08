@@ -86,7 +86,7 @@ class AuthDataSourceImpl extends AuthDataSource {
         )
       );
 
-      final user = UserMapper.userJsonToEntity(response.data['data'],token);
+      final user = UserMapper.userJsonToEntity(response.data['data'], token);
       return user;
 
 

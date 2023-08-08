@@ -29,8 +29,7 @@ class AuthRepositoryImpl extends AuthRepository {
   
   @override
   Future<User> getCurrentUser(String token) {
-    // TODO: implement getCurrentUser
-    throw UnimplementedError();
+    return dataSource.getCurrentUser(token);
   }
 
 }
