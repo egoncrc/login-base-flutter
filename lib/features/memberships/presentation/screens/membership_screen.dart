@@ -44,7 +44,7 @@ class _TicketListView extends ConsumerWidget {
               );
         },
       ),
-    );;
+    );
   }
 }
 
