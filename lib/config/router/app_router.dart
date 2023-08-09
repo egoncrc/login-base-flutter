@@ -44,6 +44,14 @@ final goRouterProvider = Provider((ref) {
         ),
       ),
 
+      GoRoute(
+        path: '/membershipshared/:entrada',
+        builder: (context, state) =>  TicketSharedScreen(
+          entrada: state.params['entrada'] ?? 'no-entrada',
+          
+        ),
+      ),
+
       
     ],
 

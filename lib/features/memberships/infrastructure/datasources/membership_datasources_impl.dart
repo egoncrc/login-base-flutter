@@ -1,5 +1,6 @@
 
 import 'package:dio/dio.dart';
+import 'package:intl/intl.dart';
 import 'package:teslo_shop/config/config.dart';
 import 'package:teslo_shop/features/auth/infrastructure/infrastructure.dart';
 import 'package:teslo_shop/features/memberships/domain/datasources/membership_datasource.dart';
@@ -21,14 +22,13 @@ class MembershipDataSourceImpl extends MembershipDataSource {
   @override
   Future<List<Entrada>> getListMerbershipsByUser(String userId) async {
     try {
+      //TODO: Cambiar a fecha de Sistema el CurrentDate
+      //String currentDate = DateFormat('yyyy-MM-dd').format(DateTime.now());
+      String currentDate = '2023-01-28';
       final response = await dio.get(
-        '/items/entradas?fields[]=juego.jornada,juego.equipo.nombre,juego.fecha,juego.hora,juego.estadio.nombre,membresia.zonasilla.zona.id,membresia.zonasilla.zona.nombre,membresia.zonasilla.silla.numero,entrada,membresia.id,membresia.socio.user&filter={"_and":[{"membresia":{"socio":{"user":{"id":{"_eq":"$userId"}}}}},{"membresia":{"estadomembresia":{"_eq":1}}}]}',
+        '/items/entradas?fields[]=juego.jornada,juego.equipo.nombre,juego.fecha,juego.hora,juego.estadio.nombre,membresia.zonasilla.zona.id,membresia.zonasilla.zona.nombre,membresia.zonasilla.silla.numero,entrada,membresia.id,membresia.socio.user&filter={"_and":[{"membresia":{"socio":{"user":{"id":{"_eq":"$userId"}}}}},{"membresia":{"estadomembresia":{"_eq":1}}},{"juego":{"fecha":{"_eq":"$currentDate"}}}]}',
       );
-
-      //'/items/entradas?filter={"_and":[{"membresia":{"socio":{"user":{"id":{"_eq":"$userId"}}}}},{"membresia":{"estadomembresia":{"_eq":1}}}]}&fields[]=juego.jornada,juego.equipo.nombre,juego.fecha,juego.hora,juego.estadio.nombre,membresia.zonasilla.zona.id,membresia.zonasilla.zona.nombre,membresia.zonasilla.silla.numero,entrada,membresia.id,membresia.socio.user'
-      ///items/entradas?fields[]=juego.jornada,juego.equipo.nombre,juego.fecha,juego.hora,juego.estadio.nombre,membresia.zonasilla.zona.id,membresia.zonasilla.zona.nombre,membresia.zonasilla.silla.numero,entrada,membresia.id,membresia.socio.user&filter={"_and":[{"membresia":{"socio":{"user":{"id":{"_eq":"900b55b4-5507-4e2c-86d2-43d7a61a0168"}}}}},{"membresia":{"estadomembresia":{"_eq":1}}}]}&access_token=Ypm71vxDiRzeuq_ZHBDk4uiFgyE7ouli'
-
-      //,options: Options(headers: {'Authorization': 'Bearer $token'})
+      
 
       EntradaResponse entradaResponse = EntradaResponse.fromMap(response.data);
      

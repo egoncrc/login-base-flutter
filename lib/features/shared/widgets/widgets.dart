@@ -4,3 +4,4 @@ export 'geometrical_background.dart';
 export 'side_menu.dart';
 export 'membership_card.dart';
 export 'ticket_card.dart';
+export 'ticket_card_shared.dart';

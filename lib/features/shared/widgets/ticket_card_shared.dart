@@ -1,23 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:qr_flutter/qr_flutter.dart';
-import '../../memberships/domain/entities/entities.dart';
+import '../../memberships/domain/domain.dart';
 
-class TicketCard extends StatelessWidget {
+class TicketCardShared extends StatelessWidget {
+  
   final Entrada entrada;
-  const TicketCard({Key? key, required this.entrada}) : super(key: key);
+  
+  const TicketCardShared(
+      {Key? key,
+      required this.entrada,
+      })
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    //final userService = context.read<UserService>();
+    return Column(
+      children: [
+        _ticketCompartido(
+            entrada.jornada, entrada.zona, entrada.asiento, entrada.visita, entrada.entrada, ''),
+      ],
+    );
+  }
+
+  Widget _ticketCompartido(int jornada, String zona, String silla,
+      String equipo, String entrada, String nombreInvitado ) {
     return Container(
-      decoration: _ticketCardDecoration(),
+      decoration: _ticketCardSharedDecoration(),
       child: Stack(
         children: [
           const Padding(
-            padding: EdgeInsets.only(top: 13, left: 18),
-            child: Image(
-                image: AssetImage('assets/images/escudo.png'), height: 40),
+            padding: EdgeInsets.only(top: 13, left:18),
+            child: Image(image: AssetImage('assets/images/escudo.png'), height: 40),
           ),
           Center(
             child: Column(
@@ -25,63 +38,60 @@ class TicketCard extends StatelessWidget {
                 const SizedBox(
                   height: 25,
                 ),
-                Text('Jornada #${entrada.jornada}',
+                Text('Jornada #$jornada',
                     style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
                         color: Colors.grey[800])),
-                Text('${entrada.zona} - Asiento: ${entrada.asiento}',
+                Text('$zona - Asiento: $silla',
                     style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(248, 176, 31, 2))),
-                Text('C.S. Herediano VS ${entrada.visita}',
+                        color: Color.fromARGB(255, 1, 25, 69))),
+                Text('C.S.Herediano VS $equipo',
                     style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
                         color: Color.fromARGB(255, 159, 112, 4))),
+                const Text('*******ENTRADA COMPARTIDA*******',
+                    style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 118, 6, 6))),
                 const SizedBox(
-                  height: 10,
+                  height: 5,
                 ),
                 const Divider(
                   color: Colors.black,
                 ),
                 QrImageView(
-
-                  data: entrada.entrada,
+                  data: entrada,
                   size: 350,
                   version: QrVersions.auto,
                 ),
                 const Divider(
                   color: Colors.black,
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 15),
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        const Icon(Icons.share_outlined),
-                        GestureDetector(
-                          onTap: () => context.push('/membershipshared/${entrada.entrada}'),
-                          child: const Text('Compartir Entrada', style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.blueAccent))),
-                        
-                      ]),
-                ),
                 const SizedBox(
-                  height: 20,
-                )
+                  height: 5,
+                ),
+                Text('Compartido por socio(a): $nombreInvitado',
+                    style: const TextStyle(
+                        fontSize: 10,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 118, 6, 6))),
+                const SizedBox(
+                  height: 5,
+                ),
               ],
             ),
-          ),
+          )
         ],
       ),
     );
   }
 
-  BoxDecoration _ticketCardDecoration() => const BoxDecoration(
+  BoxDecoration _ticketCardSharedDecoration() => const BoxDecoration(
         gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,

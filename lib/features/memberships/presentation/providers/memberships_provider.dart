@@ -8,7 +8,8 @@ final membershipsProvider =
     StateNotifierProvider<MembershipsNotifier, MembershipsState>((ref) {
   final membershipRepository = ref.watch(membershipsRepositoryProvider);
   final userID = ref.watch(authProvider).user?.id.toString() ?? '';
-  return MembershipsNotifier(membershipRepository: membershipRepository, userID:userID);
+  return MembershipsNotifier(
+      membershipRepository: membershipRepository, userID: userID);
 });
 
 //NOTIFIER
@@ -16,7 +17,8 @@ final membershipsProvider =
 class MembershipsNotifier extends StateNotifier<MembershipsState> {
   final MembershipRepository membershipRepository;
   final String userID;
-  MembershipsNotifier({ required this.membershipRepository, required this.userID})
+  MembershipsNotifier(
+      {required this.membershipRepository, required this.userID})
       : super(MembershipsState()) {
     loadMemberships();
   }
@@ -34,6 +36,7 @@ class MembershipsNotifier extends StateNotifier<MembershipsState> {
     if (entradas.isEmpty) {
       state = state.copyWith(
         isLoading: false,
+        entradas: [],
       );
       return;
     }
@@ -46,40 +49,35 @@ class MembershipsNotifier extends StateNotifier<MembershipsState> {
 
   List<Entrada> uniqueMemberships() {
     final setEntradas = Set<String>();
-    List<Entrada> totalEntradasList = [];
+    List<Entrada> totalEntradasList = [];    
     totalEntradasList.addAll(state.entradas);
 
     if (totalEntradasList.isEmpty) return [];
 
 //TODO: Cambiar fecha por fecha de hoy
-    List<Entrada> uniqueMembershipsList = totalEntradasList
-        .where((entrada) =>
-            entrada.fecha == DateTime.parse('2023-01-28 00:00:00.000'))
-        .toList();
+    // List<Entrada> uniqueMembershipsList = totalEntradasList
+    //     .where((entrada) =>
+    //         entrada.fecha == DateTime.parse('2023-01-28 00:00:00.000'))
+    //     .toList();
 
-     uniqueMembershipsList = uniqueMembershipsList
+    List<Entrada>uniqueMembershipsList = totalEntradasList
         .where((entrada) => setEntradas.add(entrada.zona))
         .toList();
 
-    
     return uniqueMembershipsList;
   }
 
   List<Entrada> membershipsByZone(String zona) {
-    
     List<Entrada> totalEntradasList = [];
     totalEntradasList.addAll(state.entradas);
 
     if (totalEntradasList.isEmpty) return [];
 
 //TODO: Cambiar fecha por fecha de hoy
-    List<Entrada> zoneMembershipsList = totalEntradasList
-        .where((entrada) =>
-            entrada.fecha == DateTime.parse('2023-01-28 00:00:00.000'))
+    List<Entrada> zoneMembershipsList = totalEntradasList        
         .where((entrada) => entrada.zona == zona)
-        .toList();    
+        .toList();
 
-    
     return zoneMembershipsList;
   }
 
