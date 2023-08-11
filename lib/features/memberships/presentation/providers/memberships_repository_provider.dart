@@ -6,6 +6,7 @@ import 'package:teslo_shop/features/memberships/infrastructure/repositories/memb
 
 final membershipsRepositoryProvider = Provider<MembershipRepository>((ref) {
   final accessToken = ref.watch(authProvider).user?.token.toString() ?? '';    
+     
   final membershipsRepository = MembershipRepositoryImpl(
       dataSource: MembershipDataSourceImpl(accessToken: accessToken));
   return membershipsRepository;

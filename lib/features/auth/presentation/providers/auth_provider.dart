@@ -44,6 +44,7 @@ class AuthNotifier extends StateNotifier<AuthState> {
 
   void checkAuthStatus() async {
     final token = await keyValueStorageService.getValue<String>('token');
+    
     if (token == null) return logout();
 
     try {
@@ -59,6 +60,7 @@ class AuthNotifier extends StateNotifier<AuthState> {
 
   void _setLoggedUser(User user) async {
     await keyValueStorageService.setKeyValue('token', user.token);
+    
 
     state = state.copyWith(
       user: user,
@@ -68,7 +70,7 @@ class AuthNotifier extends StateNotifier<AuthState> {
   }
 
   Future<void> logout([String? errorMessage]) async {
-    await keyValueStorageService.removeKey('token');
+    await keyValueStorageService.removeKey('token');    
     await keyValueStorageService.removeKey('email');
     await keyValueStorageService.removeKey('password');
 
@@ -77,6 +79,7 @@ class AuthNotifier extends StateNotifier<AuthState> {
         user: null,
         errorMessage: errorMessage);
   }
+  
 }
 
 enum AuthStatus { checking, authenticated, notAuthenticated }

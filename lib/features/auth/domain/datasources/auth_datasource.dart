@@ -5,4 +5,5 @@ abstract class AuthDataSource {
   Future<User> register(String email, String password, String fullName);
   Future<User> checkAuthStatus(String token);
   Future<User> getCurrentUser(String token);
+  
 }

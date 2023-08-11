@@ -8,13 +8,15 @@ class User {
   final String fullName;  
   final String rol;
   final String token;
+  
 
   User({
     required this.id,
     required this.email,
     required this.fullName,
     required this.rol,
-    required this.token
+    required this.token,
+    
   });
 
   bool get isAdmin {

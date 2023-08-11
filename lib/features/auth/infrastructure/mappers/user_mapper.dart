@@ -10,8 +10,7 @@ class UserMapper {
     email: json['email'],
     fullName: json['first_name'] + ' ' + json['last_name'],
     rol: json['role'],
-    token: token,
-    // token: json['token'],
+    token: token
   );
 
 }

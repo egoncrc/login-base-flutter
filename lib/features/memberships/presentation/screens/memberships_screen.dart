@@ -34,9 +34,8 @@ class _MembershipsView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final membershipProvider = ref.watch(membershipsProvider);
-    List<Entrada> memberShipsZoneList = [];
     
-    memberShipsZoneList =
+    List<Entrada> memberShipsZoneList = 
         ref.watch(membershipsProvider.notifier).uniqueMemberships();
 
     return RefreshIndicator(

@@ -7,7 +7,9 @@ import 'memberships_repository_provider.dart';
 final membershipsProvider =
     StateNotifierProvider<MembershipsNotifier, MembershipsState>((ref) {
   final membershipRepository = ref.watch(membershipsRepositoryProvider);
+  
   final userID = ref.watch(authProvider).user?.id.toString() ?? '';
+  
   return MembershipsNotifier(
       membershipRepository: membershipRepository, userID: userID);
 });
@@ -17,6 +19,7 @@ final membershipsProvider =
 class MembershipsNotifier extends StateNotifier<MembershipsState> {
   final MembershipRepository membershipRepository;
   final String userID;
+  
   MembershipsNotifier(
       {required this.membershipRepository, required this.userID})
       : super(MembershipsState()) {
@@ -29,8 +32,7 @@ class MembershipsNotifier extends StateNotifier<MembershipsState> {
     state = state.copyWith(
       isLoading: true,
     );
-
-//'900b55b4-5507-4e2c-86d2-43d7a61a0168'
+    
     final entradas =
         await membershipRepository.getListMerbershipsByUser(userID);
     if (entradas.isEmpty) {
@@ -40,7 +42,6 @@ class MembershipsNotifier extends StateNotifier<MembershipsState> {
       );
       return;
     }
-
     state = state.copyWith(
       isLoading: false,
       entradas: [...entradas],
@@ -49,7 +50,7 @@ class MembershipsNotifier extends StateNotifier<MembershipsState> {
 
   List<Entrada> uniqueMemberships() {
     final setEntradas = Set<String>();
-    List<Entrada> totalEntradasList = [];    
+    List<Entrada> totalEntradasList = [];
     totalEntradasList.addAll(state.entradas);
 
     if (totalEntradasList.isEmpty) return [];
@@ -60,7 +61,7 @@ class MembershipsNotifier extends StateNotifier<MembershipsState> {
     //         entrada.fecha == DateTime.parse('2023-01-28 00:00:00.000'))
     //     .toList();
 
-    List<Entrada>uniqueMembershipsList = totalEntradasList
+    List<Entrada> uniqueMembershipsList = totalEntradasList
         .where((entrada) => setEntradas.add(entrada.zona))
         .toList();
 
@@ -74,13 +75,11 @@ class MembershipsNotifier extends StateNotifier<MembershipsState> {
     if (totalEntradasList.isEmpty) return [];
 
 //TODO: Cambiar fecha por fecha de hoy
-    List<Entrada> zoneMembershipsList = totalEntradasList        
-        .where((entrada) => entrada.zona == zona)
-        .toList();
+    List<Entrada> zoneMembershipsList =
+        totalEntradasList.where((entrada) => entrada.zona == zona).toList();
 
     return zoneMembershipsList;
   }
-
 }
 
 //STATE

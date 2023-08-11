@@ -44,8 +44,8 @@ class SideMenuState extends ConsumerState<SideMenu> {
             child: Text(nombreSocio, style: textStyles.titleSmall),
           ),
           const NavigationDrawerDestination(
-            icon: Icon(Icons.home_outlined),
-            label: Text('Productos'),
+            icon: Icon(Icons.qr_code_2_rounded),
+            label: Text('Entradas'),
           ),
           const Padding(
             padding: EdgeInsets.fromLTRB(28, 16, 28, 10),

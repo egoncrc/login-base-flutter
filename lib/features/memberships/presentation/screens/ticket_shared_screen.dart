@@ -7,6 +7,7 @@ import 'package:share_plus/share_plus.dart';
 import 'package:path_provider/path_provider.dart';
 
 
+import '../../../auth/presentation/providers/providers.dart';
 import '../../domain/domain.dart';
 import '../../../shared/shared.dart';
 import '../providers/providers.dart';
@@ -42,8 +43,9 @@ class _ticketSharedView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final screenShotController = ScreenshotController();
-    final List<Entrada> tikects =ref.watch(membershipsProvider).entradas.toList()..where((ent) => ent.entrada == entrada);
-    
+    final List<Entrada> tikects =ref.watch(membershipsProvider).entradas.toList();
+    final List<Entrada> tikectEntry= tikects.where((ent) => ent.entrada == entrada).toList();
+    final nombreSocio = ref.read(authProvider).user?.fullName.toString() ?? 'No Socio';
     return Container(
       decoration: _tickedViewDecoration(),
       child: SingleChildScrollView(
@@ -53,7 +55,7 @@ class _ticketSharedView extends ConsumerWidget {
               padding: const EdgeInsets.all(10.0),
               child: Screenshot(
                   controller: screenShotController,
-                  child: TicketCardShared(entrada: tikects[0]),                  
+                  child: TicketCardShared(entrada: tikectEntry[0], nombreSocio: nombreSocio),                  
                   ),
             ),
             const SizedBox(

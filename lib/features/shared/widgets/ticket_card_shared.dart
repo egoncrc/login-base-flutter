@@ -3,34 +3,34 @@ import 'package:qr_flutter/qr_flutter.dart';
 import '../../memberships/domain/domain.dart';
 
 class TicketCardShared extends StatelessWidget {
-  
   final Entrada entrada;
-  
-  const TicketCardShared(
-      {Key? key,
-      required this.entrada,
-      })
-      : super(key: key);
+  final String nombreSocio;
+
+  const TicketCardShared({
+    Key? key,
+    required this.entrada, required this.nombreSocio,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        _ticketCompartido(
-            entrada.jornada, entrada.zona, entrada.asiento, entrada.visita, entrada.entrada, ''),
+        _ticketCompartido(entrada.jornada, entrada.zona, entrada.asiento,
+            entrada.visita, entrada.entrada, nombreSocio),
       ],
     );
   }
 
   Widget _ticketCompartido(int jornada, String zona, String silla,
-      String equipo, String entrada, String nombreInvitado ) {
+      String equipo, String entrada, String nombreInvitado) {
     return Container(
       decoration: _ticketCardSharedDecoration(),
       child: Stack(
         children: [
           const Padding(
-            padding: EdgeInsets.only(top: 13, left:18),
-            child: Image(image: AssetImage('assets/images/escudo.png'), height: 40),
+            padding: EdgeInsets.only(top: 13, left: 18),
+            child: Image(
+                image: AssetImage('assets/images/escudo.png'), height: 40),
           ),
           Center(
             child: Column(
