@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
-import 'package:teslo_shop/config/config.dart';
-import 'package:teslo_shop/features/auth/infrastructure/infrastructure.dart';
-import 'package:teslo_shop/features/memberships/domain/datasources/membership_datasource.dart';
-import 'package:teslo_shop/features/memberships/domain/entities/entities.dart';
-import 'package:teslo_shop/features/memberships/infrastructure/mappers/entrada_mapper.dart';
-import 'package:teslo_shop/features/memberships/infrastructure/models/entrada_response.dart';
+import 'package:socios_herediano/config/config.dart';
+import 'package:socios_herediano/features/auth/infrastructure/infrastructure.dart';
+import 'package:socios_herediano/features/memberships/domain/datasources/membership_datasource.dart';
+import 'package:socios_herediano/features/memberships/domain/entities/entities.dart';
+import 'package:socios_herediano/features/memberships/infrastructure/mappers/entrada_mapper.dart';
+import 'package:socios_herediano/features/memberships/infrastructure/models/entrada_response.dart';
 
 class MembershipDataSourceImpl extends MembershipDataSource {
   final Dio dio;

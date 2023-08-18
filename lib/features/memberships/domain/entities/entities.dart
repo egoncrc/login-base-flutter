@@ -1,2 +1,2 @@
-export 'package:teslo_shop/features/memberships/domain/entities/entrada.dart';
+export 'package:socios_herediano/features/memberships/domain/entities/entrada.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:teslo_shop/config/config.dart';
+import 'package:socios_herediano/config/config.dart';
 
 
 void main() async {

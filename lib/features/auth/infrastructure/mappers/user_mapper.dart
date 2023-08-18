@@ -1,5 +1,5 @@
 
-import 'package:teslo_shop/features/auth/domain/domain.dart';
+import 'package:socios_herediano/features/auth/domain/domain.dart';
 
 
 class UserMapper {

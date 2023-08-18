@@ -1,7 +1,7 @@
 
 
 
-import 'package:teslo_shop/features/memberships/domain/entities/entrada.dart';
+import 'package:socios_herediano/features/memberships/domain/entities/entrada.dart';
 
 abstract class MembershipDataSource {
   

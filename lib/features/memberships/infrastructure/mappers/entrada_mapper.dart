@@ -1,7 +1,7 @@
 
 
 
-import 'package:teslo_shop/features/memberships/infrastructure/models/entrada_model.dart';
+import 'package:socios_herediano/features/memberships/infrastructure/models/entrada_model.dart';
 
 import '../../domain/entities/entities.dart';
 
