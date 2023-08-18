@@ -19,7 +19,7 @@ class MembershipsScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Localidades'),
         actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.search_rounded))
+          IconButton(onPressed: () {}, icon: const Icon(Icons.sports_soccer_rounded))
         ],
       ),
       body: FadeInRight(child: const _MembershipsView()),
@@ -88,12 +88,19 @@ class _ListUniqueMemberships extends StatelessWidget {
                       ),
                     ],
                   ),
+                ),
+                const Column(
+                  children: [
+                    SizedBox(height: 15,),
+                    Text('Deslice para actualizar',style: TextStyle(color: Color.fromARGB(255, 103, 126, 219)),),
+                    Icon(Icons.keyboard_arrow_down,color:Color.fromARGB(255, 132, 150, 221),size: 50, )
+                  ],
                 )
               ],
             )
           : Padding(
               padding: const EdgeInsets.symmetric(vertical: 50),
-              child: ListView.builder(
+              child: ListView.builder(                
                 itemCount: memberShipsZoneList.length,
                 itemBuilder: (context, index) {
                   final entrada = memberShipsZoneList[index];
@@ -103,8 +110,9 @@ class _ListUniqueMemberships extends StatelessWidget {
                     child: FadeInUp(child: MembershipCard(membership: entrada)),
                   );
                 },
-              ),
+              ),              
             ),
+            
     );
   }
 }
