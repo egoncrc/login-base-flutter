@@ -16,13 +16,13 @@ class TicketCardShared extends StatelessWidget {
     return Column(
       children: [
         _ticketCompartido(entrada.jornada, entrada.zona, entrada.asiento,
-            entrada.visita, entrada.entrada, nombreSocio),
+            entrada.torneo,entrada.visita, entrada.entrada, nombreSocio),
       ],
     );
   }
 
   Widget _ticketCompartido(int jornada, String zona, String silla,
-      String equipo, String entrada, String nombreInvitado) {
+      String torneo, String equipo,String entrada, String nombreInvitado) {
     return Container(
       decoration: _ticketCardSharedDecoration(),
       child: Stack(
@@ -36,8 +36,13 @@ class TicketCardShared extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(
-                  height: 25,
+                  height: 15,
                 ),
+                Text('$torneo',
+                    style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.grey[800])),
                 Text('Jornada #$jornada',
                     style: TextStyle(
                         fontSize: 14,

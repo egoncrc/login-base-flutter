@@ -4,6 +4,7 @@ class Entrada {
   final DateTime fecha;
   final String hora;
   final String visita;
+  final String torneo;
   final String estadio;
   final String zona;
   final String asiento;
@@ -14,6 +15,7 @@ class Entrada {
   required this.fecha,
   required this.hora,
   required this.visita,
+  required this.torneo,
   required this.estadio,
   required this.zona,
   required this.asiento,

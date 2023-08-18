@@ -14,6 +14,7 @@ class EntradaMapper {
     fecha: entradaModel.juego.fecha,
     hora: entradaModel.juego.hora,
     visita: entradaModel.juego.equipo.nombre,
+    torneo: entradaModel.juego.torneo.nombre,
     estadio: entradaModel.juego.estadio.nombre,
     zona: entradaModel.membresia.zonasilla.zona.nombre,
     asiento: entradaModel.membresia.zonasilla.silla.numero,

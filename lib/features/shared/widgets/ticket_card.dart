@@ -23,8 +23,13 @@ class TicketCard extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(
-                  height: 25,
+                  height: 15,
                 ),
+                Text(entrada.torneo,
+                    style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.grey[800])),
                 Text('Jornada #${entrada.jornada}',
                     style: TextStyle(
                         fontSize: 14,

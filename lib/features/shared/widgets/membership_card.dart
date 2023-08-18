@@ -31,6 +31,14 @@ class MembershipCard extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       color: Colors.grey[700])),
               const SizedBox(
+                height: 2,
+              ),
+              Text(membership.torneo,
+                  style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.grey[700])),
+              const SizedBox(
                 height: 5,
               ),
               const Text('Club Sport Herediano',
