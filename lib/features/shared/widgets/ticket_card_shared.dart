@@ -38,7 +38,7 @@ class TicketCardShared extends StatelessWidget {
                 const SizedBox(
                   height: 15,
                 ),
-                Text('$torneo',
+                Text(torneo,
                     style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,

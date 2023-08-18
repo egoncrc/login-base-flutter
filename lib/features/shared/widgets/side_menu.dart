@@ -43,18 +43,18 @@ class SideMenuState extends ConsumerState<SideMenu> {
             padding: const EdgeInsets.fromLTRB(20, 0, 16, 10),
             child: Text(nombreSocio, style: textStyles.titleSmall),
           ),
-          const NavigationDrawerDestination(
-            icon: Icon(Icons.qr_code_2_rounded),
-            label: Text('Entradas'),
-          ),
+          // const NavigationDrawerDestination(
+          //   icon: Icon(Icons.qr_code_2_rounded),
+          //   label: Text('Entradas'),
+          // ),
           const Padding(
             padding: EdgeInsets.fromLTRB(28, 16, 28, 10),
             child: Divider(),
           ),
-          const Padding(
-            padding: EdgeInsets.fromLTRB(28, 10, 16, 10),
-            child: Text('Otras opciones'),
-          ),
+          // const Padding(
+          //   padding: EdgeInsets.fromLTRB(28, 10, 16, 10),
+          //   child: Text('Salir'),
+          // ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: CustomFilledButton(
@@ -62,6 +62,11 @@ class SideMenuState extends ConsumerState<SideMenu> {
                   ref.read(authProvider.notifier).logout();
                 },
                 text: 'Cerrar sesión'),
+          ),
+          const Padding(
+            padding: EdgeInsets.fromLTRB(28, 10, 16, 10),
+            child: Text('** Si cierra la sesión, deberá digitar su usuario y clave para ingresar nuevamente.',
+            style: TextStyle(color: Colors.red) ,textAlign: TextAlign.center),
           ),
         ]);
   }

@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:intl/intl.dart';
 import 'package:teslo_shop/config/config.dart';
 import 'package:teslo_shop/features/auth/infrastructure/infrastructure.dart';
 import 'package:teslo_shop/features/memberships/domain/datasources/membership_datasource.dart';
